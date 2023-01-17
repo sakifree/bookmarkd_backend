@@ -57,6 +57,15 @@ app.get("/bookmark", async (req, res) => {
     }
 })
 
+// BOOKMARK CREATE ROUTE
+app.post("/bookmark", async (req, res) => {
+    try {
+        res.json(await Bookmark.create(req.body))
+    } catch (error) {
+        res.status(400).json(error)
+    }
+})
+
 /***************************** */
 // SERVER LISTENER
 /***************************** */
