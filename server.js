@@ -48,6 +48,15 @@ app.get("/", (req, res) => {
     res.send("Hello World")
 })
 
+// BOOKMARK INDEX ROUTE
+app.get("/bookmark", async (req, res) => {
+    try {
+        res.json(await Bookmark.find({}))
+    } catch (error) {
+        res.status(400).json(error)
+    }
+})
+
 /***************************** */
 // SERVER LISTENER
 /***************************** */
