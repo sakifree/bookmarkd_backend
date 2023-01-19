@@ -66,11 +66,35 @@ app.post("/bookmark", async (req, res) => {
     }
 })
 
+app.get('/bookmark/:id', async (req, res) => {
+    try{
+        res.json(await Bookmark.findById(req.params.id))
+    }catch(error){
+        res.status(400).json(error)
+    }
+})
+
+app.put('bookmark/:id', async (req, res) => {
+    try{
+        res.json(await Bookmark.findByIdAndUpdate(req.params.id, req.body, {new: true}))
+    }catch(error){
+        res.status(400).json(error)
+    }
+})
+
+app.delete('/bookmark/:id', async (req, res) => {
+    try{
+        res.json(await Bookmark.findByIdAndDelete(req.params.id))
+    }catch(error){
+        res.status(400).json(error)
+    }
+})
+
+
+
 /***************************** */
 // SERVER LISTENER
 /***************************** */
 app.listen(PORT, () => {
     console.log(`Server is listening on PORT: ${PORT}`)
 })
-
-//TEST TEST
