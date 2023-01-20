@@ -74,7 +74,7 @@ app.get('/bookmark/:id', async (req, res) => {
     }
 })
 
-app.put('bookmark/:id', async (req, res) => {
+app.put('/bookmark/:id', async (req, res) => {
     try{
         res.json(await Bookmark.findByIdAndUpdate(req.params.id, req.body, {new: true}))
     }catch(error){
